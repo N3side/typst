@@ -93,14 +93,33 @@
 }
 
 
+#let pic-cache = state("pic-cache", none)
 
-#let pic_cap(txt) = {
-  image-counter.step()
+#let pic_cap(cache-key) = {
+  context {
+    let cache = state(cache-key, none).get()
 
-  context [
-    #set text(hyphenate: false)
-    Рисунок #intro-counter.display().#image-counter.display(). #txt
-  ]
+    if cache != none {
+      cache
+    } else {
+      // Получаем текущие значения (массивы)
+      let intro_vals = intro-counter.at(here())
+      let image_vals = image-counter.at(here())
+
+      // Берем первое число из массива и прибавляем 1
+      let intro_num = intro_vals.first()
+      let image_num = image_vals.first() + 1
+
+      let result = [#intro_num.#image_num.]
+
+      // Шагаем счетчик, чтобы СЛЕДУЮЩИЙ вызов видел правильное число
+      image-counter.step()
+
+      // Записываем в кэш
+      state(cache-key, none).update(result)
+      result
+    }
+  }
 }
 
 #let table_cap(txt) = {
@@ -128,11 +147,35 @@
 }
 
 #let dash_list(txt) = {
+  set par(leading: 1em)   // межстрочный интервал для абзацев
   set list(
     marker: [---],
-    indent: 1.25cm,      // отступ слева для всех строк
-    body-indent: 0.4cm,  // дополнительный отступ для второй и последующих строк
-    spacing: 1em
+    indent: 1.25cm,
+    body-indent: 0.4cm,
+    spacing: 1em            // отступ между пунктами списка
   )
   txt
+}
+
+
+#let gost_table(
+  columns: (auto, 1fr),  // значение по умолчанию
+  rows: 1,
+  caption: none,
+  ..args
+) = {
+  table(
+    columns: columns,
+    inset: (x: 0.6em, y: 0.6em),
+    stroke: (x, y) => (
+      left: 1pt,
+      right: 1pt,
+      top: if y == 0 { 1pt } else { none },           // верхняя граница
+      bottom: if y == rows - 1 { 1pt } else if y == 0 { 1pt } else { 1pt }  // разделительные линии между строками и нижняя
+    ),
+    align: (x, y) => {
+      if y == 0 { center } else { left }
+    },
+    ..args
+  )
 }

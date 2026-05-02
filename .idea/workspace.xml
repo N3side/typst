@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c8a8ef2f-0d03-476b-99ad-607ee92233e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/petrov2026.iml" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/.idea/petrov2026.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/configure.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/configure.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/economic.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/economic.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/equipment.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/equipment.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/final.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/final.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/intro.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/intro.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/literature.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/literature.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/lvs.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/lvs.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/plan.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/plan.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/task.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/task.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/theory.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/theory.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/title.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/title.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/zone_description.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/content/zone_description.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/index.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/index.typ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/CLOSER.png" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/media/CLOSER.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/PLAN.png" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/media/PLAN.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/PLAN_FULL.png" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/media/PLAN_FULL.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/SCHEMA.svg" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/media/SCHEMA.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/STRUCTURE_PLAN.png" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/media/STRUCTURE_PLAN.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared.typ" beforeDir="false" afterPath="$PROJECT_DIR$/petrov2026/shared.typ" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3CyfOjXfnHiJmNDm5P354qKKcQZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/neside/repos/typst",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/petrov2026" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-WS-261.23567.141" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c8a8ef2f-0d03-476b-99ad-607ee92233e6" name="Changes" comment="" />
+      <created>1777362706420</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1777362706420</updated>
+      <workItem from="1777362707451" duration="62000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

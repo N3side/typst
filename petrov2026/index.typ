@@ -24,7 +24,6 @@
   }
 )
 
-
 // ------------------------
 
 #include "./content/title.typ"
@@ -49,4 +48,10 @@
 #pagebreak()
 
 #include "./content/equipment.typ"
+#pagebreak()
+
+#include "./content/configure.typ"
+#pagebreak()
+
+#include "./content/economic.typ"
 #pagebreak()
