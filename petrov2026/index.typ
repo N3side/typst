@@ -32,7 +32,7 @@
 #include "./content/task.typ"
 #pagebreak()
 
-#include "./content/plan.typ"
+#include "./content/toc.typ"
 #pagebreak()
 
 #include "./content/intro.typ"

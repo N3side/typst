@@ -1,3 +1,35 @@
+#let toc-state = state("toc-state", ())
+
+#let make_toc() = context {
+  let entries = toc-state.final()
+
+  set par(spacing: 0.5em)
+
+  for entry in entries {
+    let indent = if entry.level == 1 { 0pt } else { 0.65cm }
+
+    pad(left: indent)[
+      #table(
+        columns: (1fr, auto),
+        inset: 0pt,
+        stroke: none,
+        align: bottom,
+
+        [
+          #set par(leading: 0em)
+
+          // Исправление здесь: выводим номер и точку только если номер существует
+          #if entry.number != none [#entry.number. ] #entry.title
+          #box(width: 1fr, h(0.3em) + repeat[.])
+        ],
+
+        [#entry.page],
+      )
+    ]
+  }
+}
+
+
 #let head(txt) = {
   set par(
     first-line-indent: 1.25cm,
@@ -10,67 +42,20 @@
     hyphenate: true,
   )
 
-  show text: upper
-
-  [#h(0pt)] + txt
-}
-
-#let intro-counter = counter("intro-head")
-#let sub-counter = counter("sub-head")
-#let image-counter = counter("image-counter")
-#let table-counter = counter("image-counter")
-
-// 2. Функция для основных заголовков (1. ЗАГОЛОВОК)
-#let num_head(txt) = {
-  set par(first-line-indent: 0pt, leading: 1em, justify: true, spacing: 1em)
-  set text(lang: "ru", hyphenate: true)
-
-  intro-counter.step()
-  sub-counter.update(0) // Сбрасываем подпункты
-  image-counter.update(0)   // Сбрасываем счётчик изображений
-  table-counter.update(0)   // Сбрасываем счётчик изображений
-
   context {
-    let num = intro-counter.display()
-    h(1.25cm) + num + [#". "] + upper(txt)
-  }
-}
+    let loc = here()
 
-// 3. Функция для подзаголовков (1.1. Заголовок)
-#let num_sub_head(txt) = {
+    // Добавляем запись в TOC (без номера)
+    toc-state.update(old => old + (
+      (
+        level: 1,
+        number: none,
+        title: upper(txt),
+        page: counter(page).at(loc).first(),
+      ),
+    ))
 
-  set par(first-line-indent: 0pt, leading: 0.65em, justify: true, spacing: 0.65em)
-    set text(lang: "ru", hyphenate: true)
-
-  sub-counter.step()
-
-  context {
-    let main_num = intro-counter.display()
-    let sub_num = sub-counter.display()
-    // Собираем строку номера: "1.1. "
-    h(1.25cm) + main_num + "." + sub_num + ". " + txt
-  }
-}
-
-#let num_center_head(txt) = {
-
-  set par(
-      leading: 0.65em,
-      justify: true,
-      spacing: 0.65em,
-    )
-
-  set text(lang: "ru", hyphenate: true)
-
-  intro-counter.step()
-
-  context {
-    let num = intro-counter.display()
-
-    align(center)[
-      #set par(leading: 0.65em, justify: false)
-      #num. #upper(txt)
-    ]
+    [#h(0pt)] + upper(txt)
   }
 }
 
@@ -85,11 +70,108 @@
     hyphenate: true,
   )
 
-  show text: upper
+  context {
+    let loc = here()
 
-  align(center)[
-    #h(0pt)#txt
-  ]
+    toc-state.update(old => old + (
+      (
+        level: 1,
+        number: none,
+        title: upper(txt),
+        page: counter(page).at(loc).first(),
+      ),
+    ))
+
+    align(center)[
+      #h(0pt)#upper(txt)
+    ]
+  }
+}
+
+#let intro-counter = counter("intro-head")
+#let sub-counter = counter("sub-head")
+#let image-counter = counter("image-counter")
+#let table-counter = counter("image-counter")
+
+// 2. Функция для основных заголовков (1. ЗАГОЛОВОК)
+#let num_head(txt) = {
+  set par(first-line-indent: 0pt, leading: 1em, justify: true, spacing: 1em)
+  set text(lang: "ru", hyphenate: true)
+
+  intro-counter.step()
+  sub-counter.update(0)
+  image-counter.update(0)
+  table-counter.update(0)
+
+  context {
+    let num = intro-counter.display()
+
+    // Создаем метку
+    let loc = here()
+
+    // Добавляем запись в TOC
+    toc-state.update(old => old + (
+      (
+        level: 1,
+        number: num,
+        title: upper(txt),
+        page: counter(page).at(loc).first(),
+      ),
+    ))
+
+    h(1.25cm) + num + [#". "] + upper(txt)
+  }
+}
+
+// 3. Функция для подзаголовков (1.1. Заголовок)
+#let num_sub_head(txt) = {
+
+  set par(first-line-indent: 0pt, leading: 0.65em, justify: true, spacing: 0.65em)
+  set text(lang: "ru", hyphenate: true)
+
+  sub-counter.step()
+
+  context {
+    let main_num = intro-counter.display()
+    let sub_num = sub-counter.display()
+
+    let full_num = main_num + "." + sub_num
+
+    let loc = here()
+
+    toc-state.update(old => old + (
+      (
+        level: 2,
+        number: full_num,
+        title: txt,
+        page: counter(page).at(loc).first(),
+      ),
+    ))
+
+    h(1.25cm) + main_num + "." + sub_num + ". " + txt
+  }
+}
+
+#let num_center_head(txt) = {
+
+  set par(
+      leading: 0.65em,
+      justify: true,
+      spacing: 0.65em,
+  )
+
+  set text(lang: "ru", hyphenate: true)
+
+  intro-counter.step()
+
+  context {
+    let num = intro-counter.display()
+
+    align(center)[
+      #set par(leading: 0.65em, justify: false)
+      #num. #upper(txt)
+    ]
+  }
 }
 
 

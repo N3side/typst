@@ -3,3 +3,5 @@
 #center_head[
     Содержание
 ]
+
+#make_toc()
