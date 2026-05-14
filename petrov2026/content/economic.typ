@@ -15,7 +15,7 @@
   (name: "Коммутатор PoE MikroTik CRS328-24P-4S+RM", qty: 1, price: 57499),
   (name: "Коммутатор MikroTik CRS326-24G-2S+RM", qty: 1, price: 31600),
   (name: "Видеорегистратор Hikvision DS-7616NI-Q2(D)", qty: 1, price: 14830),
-  (name: "Жесткий диск HDD WD82PURX 8GB", qty: 2, price: 23340),
+  (name: "Жесткий диск HDD WD82PURX 8TB", qty: 2, price: 23340),
   (name: "ip-камера Hikvision Hikvision DS-2CD2183G2-IS", qty: 1, price: 12243),
   (name: "ip-камера Hikvision DS-2CD2143G2-IS", qty: 9, price: 9220),
   (name: "Точка доступа MikroTik cAP ax", qty: 5, price: 13264),
@@ -24,7 +24,7 @@
   (name: "Лестничный лоток LLZ200X50X2500(1.2)ZN", qty: 30, price: 565),
   (name: "MacBook Air 13 m2 16/256", qty: 11, price: 64990),
   (name: "MacBook Air 13 m3 24/512", qty: 23, price: 118990),
-  (name: "Монитор DEXP DF24H1UC", qty: 34, price: 8500),
+  (name: "Монитор DEXP DF24H1UC", qty: 15, price: 8500),
   (name: "Ноутбук OSiO FocusLine F140I-006", qty: 11, price: 34999),
 )
 

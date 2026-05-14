@@ -6,6 +6,11 @@
   set par(spacing: 0.5em)
 
   for entry in entries {
+    // ВОТ ЭТА ПРОВЕРКА: если заголовок (в любом регистре) это "СОДЕРЖАНИЕ" — пропускаем
+    if upper(entry.title) == "СОДЕРЖАНИЕ" {
+      continue
+    }
+
     let indent = if entry.level == 1 { 0pt } else { 0.65cm }
 
     pad(left: indent)[
@@ -17,8 +22,6 @@
 
         [
           #set par(leading: 0em)
-
-          // Исправление здесь: выводим номер и точку только если номер существует
           #if entry.number != none [#entry.number. ] #entry.title
           #box(width: 1fr, h(0.3em) + repeat[.])
         ],
@@ -45,7 +48,6 @@
   context {
     let loc = here()
 
-    // Добавляем запись в TOC (без номера)
     toc-state.update(old => old + (
       (
         level: 1,
@@ -55,11 +57,11 @@
       ),
     ))
 
-    [#h(0pt)] + upper(txt)
+    [#h(1.25cm)] + upper(txt)   // ← добавил отступ слева
   }
 }
 
-#let center_head(txt) = {
+#let center_head(txt, in_toc: true) = {
   set par(
     leading: 0.65em,
     justify: false,
@@ -73,14 +75,17 @@
   context {
     let loc = here()
 
-    toc-state.update(old => old + (
-      (
-        level: 1,
-        number: none,
-        title: upper(txt),
-        page: counter(page).at(loc).first(),
-      ),
-    ))
+    // Добавляем в state только если in_toc == true
+    if in_toc {
+      toc-state.update(old => old + (
+        (
+          level: 1,
+          number: none,
+          title: upper(txt),
+          page: counter(page).at(loc).first(),
+        ),
+      ))
+    }
 
     align(center)[
       #h(0pt)#upper(txt)
@@ -215,7 +220,7 @@
 
 #let body_text(txt) = {
   set par(
-    first-line-indent: 1.25cm,
+    // Оставляем это на случай, если внутри txt будет несколько абзацев
     leading: 1em,
     justify: true,
     spacing: 1em,
@@ -225,17 +230,46 @@
     hyphenate: true,
   )
 
-  [#h(0pt)] + txt
+  // Убираем [#h(0pt)] и жестко вставляем пробел в 1.25cm для первой строки.
+  // Это заставит Typst нарисовать красную строку даже сразу после списка.
+  h(1.25cm) + txt
 }
 
 #let dash_list(txt) = {
-  set par(leading: 1em)   // межстрочный интервал для абзацев
-  set list(
-    marker: [---],
-    indent: 1.25cm,
-    body-indent: 0.4cm,
-    spacing: 1em            // отступ между пунктами списка
+  // Настраиваем правила для абзацев внутри этого блока
+  set par(
+    first-line-indent: 1.25cm, // Только первая строка сдвигается на 1.25cm
+    leading: 1em,
+    justify: true,
+    spacing: 1em
   )
+
+  // Перехватываем стандартный список и превращаем его в текст
+  show list: it => {
+    it.children.map(item => {
+      // Собираем строку: тире + отступ 0.2cm + текст пункта
+      [--- #h(0.1cm) #item.body]
+    }).join(parbreak()) // parbreak() делает каждый пункт отдельным абзацем
+  }
+
+  txt
+}
+
+#let num_list(txt) = {
+  set enum(
+    indent: 0pt,         // Номер стоит у левого края
+    body-indent: 0.4cm,  // Расстояние от номера до текста
+    spacing: 1em,
+    numbering: "1.",
+  )
+
+  set par(
+    first-line-indent: 1.25cm, // Красная строка для первой линии (где номер)
+    hanging-indent: 0pt,       // Вторая строка пойдет от нуля (левого края)
+    justify: true,
+    leading: 1em,
+  )
+
   txt
 }
 

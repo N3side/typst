@@ -55,3 +55,11 @@
 
 #include "./content/economic.typ"
 #pagebreak()
+
+#include "./content/final.typ"
+#pagebreak()
+
+#include "./content/literature.typ"
+#pagebreak()
+
+#include "./content/supplement.typ"
